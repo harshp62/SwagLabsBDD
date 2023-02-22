@@ -25,5 +25,10 @@ And user is on the Inventory Page and the products tab is displayed
 When User filters the products alphabetically is descending order (Z-A)
 Then The products should be displayed in descending alphabetical order
 
+Scenario: Test Price Filter - Low to High 
 
+Given user is logged in
+And user is on the Inventory Page and the products tab is displayed
+When User filters the products by price from low to high
+Then The products should be displayed by price from low to high
 
