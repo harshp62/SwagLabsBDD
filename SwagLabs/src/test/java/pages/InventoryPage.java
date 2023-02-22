@@ -38,6 +38,8 @@ public class InventoryPage extends ReusableUtils {
 	@FindBy (css="select.product_sort_container")
 	WebElement filterOption;
 	
+	@FindBy (css="div[class='pricebar'] div")
+	List<WebElement> prices;
 	
 	public boolean isInvMenuDisplayed () {
 		
@@ -65,6 +67,19 @@ public class InventoryPage extends ReusableUtils {
 		
 	}
 	
+	public List<String> getProductNames (List<WebElement> productNames) {
+		
+		List<String> prodNames = new ArrayList<>();
+		
+		for(int i=0; i<productNames.size();i++) {
+			
+			prodNames.add(productNames.get(i).getText());
+		}
+		
+		return prodNames;
+	}
+	
+
 	public List<String> getProductNames () {
 		
 		List<String> prodNames = new ArrayList<>();
@@ -86,7 +101,7 @@ public class InventoryPage extends ReusableUtils {
 		
 //		filterResults("za");
 		
-		List<String> prodList = getProductNames();
+		List<String> prodList = getProductNames(productNames);
 		
 		List<Character> firstLetter = new ArrayList<>();
 		
@@ -110,6 +125,35 @@ public class InventoryPage extends ReusableUtils {
 		
 	}
 	
+	public boolean checkHiLowFIlter() {
+		
+List<String> prodList = getProductNames(prices);
+		
+		List<Double> priceIntValue = new ArrayList<>();
+		
+		for(int i=0; i<prodList.size();i++) {
+			
+			priceIntValue.add(Double.parseDouble(prodList.get(i).substring(1)));
+		
+		}
+		
+		List<Double> orderedList = new ArrayList<>(priceIntValue);
+		
+		System.out.println("price_orderedList: "+ orderedList);
+		System.out.println("price_priceIntValue: "+ priceIntValue);
+		
+		return priceIntValue.equals(orderedList);
+	}
+	
+	
+	
+
+				 
+		
+	}
+	
 
 	
-}
+
+	
+

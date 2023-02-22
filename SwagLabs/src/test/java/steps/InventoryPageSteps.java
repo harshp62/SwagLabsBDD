@@ -1,5 +1,6 @@
 package steps;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebDriver;
@@ -74,6 +75,20 @@ public class InventoryPageSteps {
 	public void the_products_should_be_displayed_in_descending_alphabetical_order() {
 	    
 	    assertTrue(inventoryPage.checkZAFilter());
+	}
+	
+	@When("User filters the products by price from low to high")
+	public void user_filters_the_products_by_price_from_low_to_high() {
+	    // Write code here that turns the phrase above into concrete actions
+		inventoryPage.filterResults("lohi");
+
+	}
+	@Then("The products should be displayed by price from low to high")
+	public void the_products_should_be_displayed_by_price_from_low_to_high() {
+	    // Write code here that turns the phrase above into concrete actions
+
+		assertTrue(inventoryPage.checkHiLowFIlter());
+		
 	}
 
 }
