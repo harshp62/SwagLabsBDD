@@ -59,12 +59,12 @@ public class InventoryPage extends ReusableUtils {
 
 	public void openMenuTab() {
 
-		ReusableUtils.jsClick(menuButton);
+		jsClick(menuButton);
 	}
 
 	public void clickAboutLink() {
 
-		ReusableUtils.jsClick(aboutLink);
+		jsClick(aboutLink);
 	}
 
 	public boolean isAboutLinkDisplayed() {
@@ -99,7 +99,7 @@ public class InventoryPage extends ReusableUtils {
 
 	public void filterResults(String value) {
 
-		ReusableUtils.dropdownSelect(filterOption, value);
+		dropdownSelect(filterOption, value);
 	}
 
 	public boolean checkAlphaFilter(String filter) {

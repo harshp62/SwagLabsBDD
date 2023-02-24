@@ -8,14 +8,15 @@ import org.openqa.selenium.support.PageFactory;
 
 import utility.ReusableUtils;
 
-public class CartPage {
+public class CartPage extends ReusableUtils {
 
 	public WebDriver driver;
 	public String pageTitle;
 	public String pageURL;
 
 	public CartPage(WebDriver driver) {
-
+		
+		super(driver);
 		this.driver = driver;
 		this.pageTitle = "Swag Labs";
 		this.pageURL = "https://www.saucedemo.com/cart.html";
@@ -49,7 +50,7 @@ public class CartPage {
 	public boolean isItemDisplayed(String prodname) {
 
 		
-		return ReusableUtils.waitForElement(By.xpath("//div[@class='cart_item_label']/a/div")).getText().replace('-', ' ').equalsIgnoreCase(prodname);
+		return waitForElement(By.xpath("//div[@class='cart_item_label']/a/div")).getText().replace('-', ' ').equalsIgnoreCase(prodname);
 	}
 
 }
