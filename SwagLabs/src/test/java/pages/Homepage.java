@@ -43,7 +43,7 @@ public class Homepage extends ReusableUtils {
 		
 		userInputBox.sendKeys(username);
 		passwordInputBox.sendKeys(password);
-		ReusableUtils.jsClick(loginButton);
+		jsClick(loginButton);
 		
 	}
 	
