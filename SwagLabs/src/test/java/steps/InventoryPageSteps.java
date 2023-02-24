@@ -74,21 +74,33 @@ public class InventoryPageSteps {
 	@Then("The products should be displayed in descending alphabetical order")
 	public void the_products_should_be_displayed_in_descending_alphabetical_order() {
 	    
-	    assertTrue(inventoryPage.checkZAFilter());
+	    assertTrue(inventoryPage.checkAlphaFilter("za"));
 	}
 	
 	@When("User filters the products by price from low to high")
 	public void user_filters_the_products_by_price_from_low_to_high() {
 	    // Write code here that turns the phrase above into concrete actions
-		inventoryPage.filterResults("lohi");
+		inventoryPage.filterResults("hilo");
 
 	}
 	@Then("The products should be displayed by price from low to high")
 	public void the_products_should_be_displayed_by_price_from_low_to_high() {
 	    // Write code here that turns the phrase above into concrete actions
 
-		assertTrue(inventoryPage.checkHiLowFIlter());
+		assertTrue(inventoryPage.checkPriceFIlter("lohi"));
 		
+	}
+	
+	@When("^User adds (.+) to the cart$")
+	public void user_adds_sauce_labs_backpack_to_the_cart(String product) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    inventoryPage.addProductToCart(product);
+	}
+	
+	@When("goes to the cart page")
+	public void goes_to_the_cart_page() {
+	    // Write code here that turns the phrase above into concrete actions
+		inventoryPage.goToCart();
 	}
 
 }
