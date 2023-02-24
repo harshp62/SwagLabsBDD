@@ -2,6 +2,7 @@ package utility;
 
 import org.openqa.selenium.WebDriver;
 
+import pages.CartPage;
 import pages.Homepage;
 import pages.InventoryPage;
 import pages.SauceLabsPage;
@@ -11,6 +12,7 @@ public class PageObjectManager {
 	public Homepage homepage;
 	public InventoryPage inventorypage;
 	public SauceLabsPage sauceLabsPage;
+	public CartPage cartPage;
 	public WebDriver driver;
 	
 	public PageObjectManager (WebDriver driver) {
@@ -34,6 +36,14 @@ public class PageObjectManager {
 		
 		sauceLabsPage = new SauceLabsPage(driver);
 		return sauceLabsPage;
+	}
+	
+	public CartPage getCartPage () {
+		
+		cartPage = new CartPage(driver);
+		return cartPage;
+		
+		
 	}
 
 }
