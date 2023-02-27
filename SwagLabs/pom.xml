@@ -32,6 +32,10 @@
     <version>5.3.2</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
+
+
+
 
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 <dependency>
@@ -128,6 +132,5 @@
       </plugins>
     </pluginManagement>
   </build>
-
 
 </project>

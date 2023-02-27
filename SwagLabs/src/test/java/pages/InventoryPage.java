@@ -3,7 +3,9 @@ package pages;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -109,22 +111,35 @@ public class InventoryPage extends ReusableUtils {
 		List<String> prodList = getProductNames(productNames);
 
 		List<Character> firstLetter = new ArrayList<>();
+		List<Character> fLetter = new ArrayList<>();
+		List<Character> oList = new ArrayList<>(firstLetter);
 
-		for (int i = 0; i < prodList.size(); i++) {
+		fLetter =prodList.stream().map(n->n.charAt(0)).collect(Collectors.toList());
+		oList = fLetter.stream().sorted().collect(Collectors.toList());
+		
+		
+		
+//		for (int i = 0; i < prodList.size(); i++) {
+//
+//			firstLetter.add(prodList.get(i).charAt(0));
+//		}
 
-			firstLetter.add(prodList.get(i).charAt(0));
-		}
-
-		List<Character> orderedList = new ArrayList<>(firstLetter);
+//		List<Character> orderedList = new ArrayList<>(firstLetter);
 
 		if (filter.equalsIgnoreCase("za")) {
-			Collections.sort(orderedList, Collections.reverseOrder());
+			oList = fLetter.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 		}
+		else {
+			
+			oList = fLetter.stream().sorted().collect(Collectors.toList());
+		}
+		
+		System.out.println("Original List: "+fLetter);
+		System.out.println("Ordered List: "+oList);
+//		System.out.println("Ordered List: " + orderedList);
+//		System.out.println("Original List: " + firstLetter);
 
-		System.out.println("Ordered List: " + orderedList);
-		System.out.println("Original List: " + firstLetter);
-
-		return firstLetter.equals(orderedList);
+		return fLetter.equals(oList);
 
 	}
 

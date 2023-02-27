@@ -16,7 +16,7 @@ Examples:
 |Sauce Labs Onesie|
 |Test.allTheThings() T-Shirt (Red)|
 
-
+@Alphafilter
 Scenario: Test Aplhabetical filter
 
 
