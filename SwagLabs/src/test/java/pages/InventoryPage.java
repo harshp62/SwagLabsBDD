@@ -3,7 +3,9 @@ package pages;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -89,10 +91,12 @@ public class InventoryPage extends ReusableUtils {
 
 		List<String> prodNames = new ArrayList<>();
 
-		for (int i = 0; i < productNames.size(); i++) {
+		prodNames = productNames.stream().map(n->n.getText()).collect(Collectors.toList());
 
-			prodNames.add(productNames.get(i).getText());
-		}
+//		for (int i = 0; i < productNames.size(); i++) {
+//
+//			prodNames.add(productNames.get(i).getText());
+//		}
 
 		return prodNames;
 	}
@@ -104,27 +108,30 @@ public class InventoryPage extends ReusableUtils {
 
 	public boolean checkAlphaFilter(String filter) {
 
-//		filterResults("za");
 
 		List<String> prodList = getProductNames(productNames);
 
-		List<Character> firstLetter = new ArrayList<>();
+		List<Character> firstLetter;
+		List<Character> fLetter;
+		List<Character> oList;
 
-		for (int i = 0; i < prodList.size(); i++) {
+		fLetter =prodList.stream().map(n->n.charAt(0)).collect(Collectors.toList());
+		oList = fLetter.stream().sorted().collect(Collectors.toList());
+		
 
-			firstLetter.add(prodList.get(i).charAt(0));
-		}
-
-		List<Character> orderedList = new ArrayList<>(firstLetter);
 
 		if (filter.equalsIgnoreCase("za")) {
-			Collections.sort(orderedList, Collections.reverseOrder());
+			oList = fLetter.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 		}
+		else {
+			
+			oList = fLetter.stream().sorted().collect(Collectors.toList());
+		}
+		
+		System.out.println("Original List: "+fLetter);
+		System.out.println("Ordered List: "+oList);
 
-		System.out.println("Ordered List: " + orderedList);
-		System.out.println("Original List: " + firstLetter);
-
-		return firstLetter.equals(orderedList);
+		return fLetter.equals(oList);
 
 	}
 
@@ -132,19 +139,21 @@ public class InventoryPage extends ReusableUtils {
 
 		List<String> prodList = getProductNames(prices);
 
-		List<Double> priceIntValue = new ArrayList<>();
+		List<Double> priceIntValue;
 
-		for (int i = 0; i < prodList.size(); i++) {
-
-			priceIntValue.add(Double.parseDouble(prodList.get(i).substring(1)));
-
-		}
+		priceIntValue= prodList.stream().map(n -> Double.parseDouble(n.substring(1))).collect(Collectors.toList());
 
 		List<Double> orderedList = new ArrayList<>(priceIntValue);
 
 		if (filter.equalsIgnoreCase("hilo")) {
 
+
 			Collections.sort(orderedList, Collections.reverseOrder());
+		}
+		else {
+
+			orderedList = priceIntValue.stream().sorted().collect(Collectors.toList());
+
 		}
 
 		System.out.println("price_orderedList: " + orderedList);

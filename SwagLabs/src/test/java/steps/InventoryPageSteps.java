@@ -68,13 +68,13 @@ public class InventoryPageSteps {
 	@When("User filters the products alphabetically is descending order \\(Z-A)")
 	public void user_filters_the_products_alphabetically_is_descending_order_z_a() {
 	    
-		inventoryPage.filterResults("za");
+		inventoryPage.filterResults("az");
 	    
 	}
 	@Then("The products should be displayed in descending alphabetical order")
 	public void the_products_should_be_displayed_in_descending_alphabetical_order() {
 	    
-	    assertTrue(inventoryPage.checkAlphaFilter("za"));
+	    assertTrue(inventoryPage.checkAlphaFilter("az"));
 	}
 	
 	@When("User filters the products by price from low to high")
@@ -87,7 +87,7 @@ public class InventoryPageSteps {
 	public void the_products_should_be_displayed_by_price_from_low_to_high() {
 	    // Write code here that turns the phrase above into concrete actions
 
-		assertTrue(inventoryPage.checkPriceFIlter("lohi"));
+		assertTrue(inventoryPage.checkPriceFIlter("hilo"));
 		
 	}
 	
