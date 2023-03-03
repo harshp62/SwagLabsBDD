@@ -1,5 +1,5 @@
 Feature: Product List
-
+@Productlist
 Scenario Outline: Test product list
 
 Given user is logged in
@@ -25,6 +25,8 @@ And user is on the Inventory Page and the products tab is displayed
 When User filters the products alphabetically is descending order (Z-A)
 Then The products should be displayed in descending alphabetical order
 
+
+@Pricefilter
 Scenario: Test Price Filter - Low to High 
 
 Given user is logged in

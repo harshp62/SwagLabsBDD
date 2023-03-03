@@ -1,5 +1,6 @@
 Feature: checkout products
 
+@Checkout
 Scenario Outline: test user checkout
 
 Given user is logged in

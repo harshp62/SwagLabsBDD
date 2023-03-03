@@ -87,7 +87,7 @@ public class InventoryPageSteps {
 	public void the_products_should_be_displayed_by_price_from_low_to_high() {
 	    // Write code here that turns the phrase above into concrete actions
 
-		assertTrue(inventoryPage.checkPriceFIlter("lohi"));
+		assertTrue(inventoryPage.checkPriceFIlter("hilo"));
 		
 	}
 	
