@@ -77,12 +77,9 @@ public class InventoryPage extends ReusableUtils {
 
 	public List<String> getProductNames(List<WebElement> productNames) {
 
-		List<String> prodNames = new ArrayList<>();
+		List<String> prodNames;
 
-		for (int i = 0; i < productNames.size(); i++) {
-
-			prodNames.add(productNames.get(i).getText());
-		}
+		prodNames = productNames.stream().map(n->n.getText()).collect(Collectors.toList());
 
 		return prodNames;
 	}
@@ -93,10 +90,6 @@ public class InventoryPage extends ReusableUtils {
 
 		prodNames = productNames.stream().map(n->n.getText()).collect(Collectors.toList());
 
-//		for (int i = 0; i < productNames.size(); i++) {
-//
-//			prodNames.add(productNames.get(i).getText());
-//		}
 
 		return prodNames;
 	}
