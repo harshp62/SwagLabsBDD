@@ -2,10 +2,7 @@ package utility;
 
 import org.openqa.selenium.WebDriver;
 
-import pages.CartPage;
-import pages.Homepage;
-import pages.InventoryPage;
-import pages.SauceLabsPage;
+import pages.*;
 
 public class PageObjectManager {
 	
@@ -14,6 +11,9 @@ public class PageObjectManager {
 	public SauceLabsPage sauceLabsPage;
 	public CartPage cartPage;
 	public WebDriver driver;
+	public CheckoutTwo checkoutTwo;
+	public CheckoutOne checkoutOne;
+	public CheckoutComplete checkoutComplete;
 	
 	public PageObjectManager (WebDriver driver) {
 		
@@ -46,4 +46,16 @@ public class PageObjectManager {
 		
 	}
 
+	public CheckoutOne getCheckoutOne() {
+		return checkoutOne = new CheckoutOne(driver);
+	}
+
+	public CheckoutTwo getCheckoutTwo() {
+
+		return checkoutTwo = new CheckoutTwo(driver);
+	}
+
+	public CheckoutComplete getCheckoutComplete() {
+		return checkoutComplete = new CheckoutComplete(driver);
+	}
 }

@@ -13,6 +13,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,6 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ReusableUtils {
 	public WebDriver driver;
 	public JavascriptExecutor js;
+	public Actions actions;
 
 	public ReusableUtils (WebDriver driver) {
 
@@ -119,6 +121,14 @@ public class ReusableUtils {
 		js= (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click()", element);
 		
+	}
+
+	public void moveToElementAndClick(WebElement element) {
+
+		actions = new Actions(driver);
+		actions.moveToElement(element).click().build().perform();
+
+
 	}
 	
 
