@@ -4,6 +4,7 @@ import static org.testng.Assert.assertTrue;
 
 import dependencyinjection.TestContextSetup;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.CartPage;
 
 public class CartPageSteps {
@@ -34,5 +35,12 @@ public class CartPageSteps {
 	    // Write code here that turns the phrase above into concrete actions
 		assertTrue(cartPage.isItemDisplayed(prod));
 	}
+
+	@When("user checks out")
+	public void userChecksOut() {
+
+		cartPage.checkOut();
+	}
+
 
 }

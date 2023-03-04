@@ -53,4 +53,9 @@ public class CartPage extends ReusableUtils {
 		return waitForElement(By.xpath("//div[@class='cart_item_label']/a/div")).getText().replace('-', ' ').equalsIgnoreCase(prodname);
 	}
 
+	public void checkOut() {
+
+		moveToElementAndClick(checkoutButton);
+	}
+
 }
