@@ -30,6 +30,9 @@ public class CheckoutOne extends ReusableUtils {
     @FindBy(id="continue")
     WebElement continueButtn;
 
+    @FindBy(css="div[class*=error] h3")
+    WebElement errorMessage;
+
 
     public boolean isTitleDisplayed() {
 
@@ -44,6 +47,13 @@ public class CheckoutOne extends ReusableUtils {
 //        moveToElementAndClick(continueButtn);
         continueButtn.click();
     }
+
+    public boolean isErrorDisplayed(String message) {
+
+        return errorMessage.getText().equalsIgnoreCase(message);
+    }
+
+
 
 
 }
