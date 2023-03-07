@@ -26,11 +26,11 @@ Scenario Outline: Test end-to-end flow
 
   Given user is logged in
   And user is on the Inventory Page and the products tab is displayed
-  When User adds <product> to the cart
+  When User adds "<product>" to the cart
   And goes to the cart page
   Then user is navigated to the cart page
   And cartpage title is displayed
-  And <product> is displayed in the cart
+  And "<product>" is displayed in the cart
   When user checks out
   Then user is navigated to the checkout one page
   When user enters his information as "Michael", "Scott", "380007" and continues
@@ -45,4 +45,25 @@ Scenario Outline: Test end-to-end flow
     |product              |total |
     |Sauce Labs Backpack  | 32.39|
     |Sauce Labs Bike Light| 10.79|
+
+@Datavalidation
+  Scenario Outline: test checkout data validations
+    Given user is logged in
+    And user is on the Inventory Page and the products tab is displayed
+    When User adds <product> to the cart
+    And goes to the cart page
+    Then user is navigated to the cart page
+    And cartpage title is displayed
+    And <product> is displayed in the cart
+    When user checks out
+    Then user is navigated to the checkout one page
+    When user enters his information as "<firstname>", "<lastname>", "<postalcode>" and continues
+    Then "<errormessage>" error is displayed
+
+    Examples:
+
+      |product              |errormessage                 |firstname    |lastname   |postalcode|
+      |Sauce Labs Backpack  |Error: First Name is required |            |Scott      |123456    |
+      |Sauce Labs Backpack  |Error: Last Name is required  |Michael     |           |123456    |
+      |Sauce Labs Backpack  |Error: Postal Code is required|Dwight      |Schrute    |          |
 

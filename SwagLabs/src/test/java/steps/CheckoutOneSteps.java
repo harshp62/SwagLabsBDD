@@ -32,4 +32,9 @@ public class CheckoutOneSteps {
     }
 
 
+    @Then("{string} error is displayed")
+    public void errorIsDisplayed(String arg0) {
+
+        assertTrue(checkoutOne.isErrorDisplayed(arg0));
+    }
 }
