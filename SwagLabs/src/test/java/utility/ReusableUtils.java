@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -33,6 +34,13 @@ public class ReusableUtils {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 
+
+	}
+
+	public List<WebElement> waitForElements(By by) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
 	}
 
 	public String getProperty(String filename, String key) throws IOException {

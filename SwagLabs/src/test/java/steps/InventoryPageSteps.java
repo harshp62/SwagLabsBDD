@@ -103,4 +103,18 @@ public class InventoryPageSteps {
 		inventoryPage.goToCart();
 	}
 
+
+	@And("^removes the (.+) from the cart by cliking th remove item button$")
+	public void removesTheFromTheCartByClikingThRemoveItemButton(String arg0) throws Exception {
+
+		inventoryPage.removeProductFromCart(arg0);
+	}
+
+	@Then("the items is removed from the cart and the cart icon is changed")
+	public void theItemsIsRemovedFromTheCartAndTheCartIconIsChanged() {
+
+		assertTrue(inventoryPage.isShoppingCartEmpty());
+	}
+
+
 }
