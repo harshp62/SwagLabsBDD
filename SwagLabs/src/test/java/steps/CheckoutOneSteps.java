@@ -26,15 +26,22 @@ public class CheckoutOneSteps {
 
 
     @When("user enters his information as {string}, {string}, {string} and continues")
-    public void userEntersHisInformationAsAndContinues(String arg0, String arg1, String arg2) {
+    public void user_enters_his_information_as_and_continues(String firstname, String lastname, String postalcode) {
 
-        checkoutOne.enterCheckoutDetails(arg0, arg1,arg2);
+        checkoutOne.enterCheckoutDetails(firstname, lastname,postalcode);
     }
 
 
-    @Then("{string} error is displayed")
+    @Then("^(.+) error is displayed$")
     public void errorIsDisplayed(String arg0) {
 
         assertTrue(checkoutOne.isErrorDisplayed(arg0));
+    }
+
+
+    @When("user enters his information as {string}, {string}, {string} and continues next")
+    public void userEntersHisInformationAsAndContinuesNext(String arg0, String arg1, String arg2) {
+
+        checkoutOne.enterCheckoutDetails(arg0,arg1,arg2);
     }
 }

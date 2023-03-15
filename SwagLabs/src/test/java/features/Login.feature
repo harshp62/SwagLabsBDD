@@ -45,10 +45,10 @@ And User is still on the homepage
 Examples:
 
 |username								|password|
-|standard_user					|abc|
-|locked_out_user				|s1ss2s36hsadasd|
-|problem_user						|456456456456|
-|performance_glitch_user|asda"####"|
+|standard_user					        |abc|
+|locked_out_user				        |s1ss2s36hsadasd|
+|problem_user						    |456456456456|
+|performance_glitch_user                |asda"####"|
 
 
 Scenario: Test blank password field

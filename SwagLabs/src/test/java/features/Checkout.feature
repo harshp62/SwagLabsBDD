@@ -57,13 +57,35 @@ Scenario Outline: Test end-to-end flow
     And <product> is displayed in the cart
     When user checks out
     Then user is navigated to the checkout one page
-    When user enters his information as "<firstname>", "<lastname>", "<postalcode>" and continues
-    Then "<errormessage>" error is displayed
+    When user enters his information as "<firstname>", "<lastname>", "<postalcode>" and continues next
+    Then <errormessage> error is displayed
 
     Examples:
 
-      |product              |errormessage                 |firstname    |lastname   |postalcode|
+      |product              |errormessage                  |firstname   |lastname   |postalcode|
       |Sauce Labs Backpack  |Error: First Name is required |            |Scott      |123456    |
       |Sauce Labs Backpack  |Error: Last Name is required  |Michael     |           |123456    |
       |Sauce Labs Backpack  |Error: Postal Code is required|Dwight      |Schrute    |          |
+
+@Remove
+  Scenario Outline: Test Remove items button
+    Given user is logged in
+    And user is on the Inventory Page and the products tab is displayed
+    When User adds <product> to the cart
+    And removes the <product> from the cart by cliking th remove item button
+    Then the items is removed from the cart and the cart icon is changed
+
+  Examples:
+
+    |product|
+    |Sauce Labs Backpack|
+    |Sauce Labs Bike Light|
+
+
+
+
+
+
+
+
 
