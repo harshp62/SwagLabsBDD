@@ -26,14 +26,14 @@ public class CheckoutTwoSteps {
         assertTrue(checkoutTwo.isTitleDisplayed());
     }
 
-    @And("{string} name is displayed")
+    @And("^(.+) name is displayed$")
     public void nameIsDisplayed(String arg0) {
 
         assertTrue(checkoutTwo.isProductDisplayed(arg0));
     }
 
 
-    @And("the total price of the product after tax is {string}")
+    @And("^the total price of the product after tax is (.+)$")
     public void theTotalPriceOfTheProductAfterTaxIs(String arg0) {
 
         assertTrue(checkoutTwo.isTotalCorrectAfterTax(arg0));

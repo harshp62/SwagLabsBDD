@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = "src\\test\\java\\features", tags = "@Remove",
+@CucumberOptions(features = "src\\test\\java\\features", tags = "@Regression",
         glue = "steps",
         dryRun = false,
         monochrome = true,

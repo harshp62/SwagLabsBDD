@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import utility.ReusableUtils;
 
-public class CartPage extends ReusableUtils {
+public class  CartPage extends ReusableUtils {
 
 	public WebDriver driver;
 	public String pageTitle;
