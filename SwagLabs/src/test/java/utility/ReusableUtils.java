@@ -35,12 +35,14 @@ public class ReusableUtils {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 
 
+
 	}
 
 	public List<WebElement> waitForElements(By by) {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+
 	}
 
 	public String getProperty(String filename, String key) throws IOException {
@@ -75,14 +77,19 @@ public class ReusableUtils {
 		driver.switchTo().defaultContent();
 	}
 
-	public void switchWindows(String windowtitle) {
+	public void switchWindows(String windowtitle) throws InterruptedException {
 
 		String defaultWindow = driver.getWindowHandle();
+		System.out.println(driver.getWindowHandles().size());
 		int count = 0;
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
 		for (String handle : driver.getWindowHandles()) {
 
 			driver.switchTo().window(handle);
+//			wait.until(ExpectedConditions.titleContains(windowtitle));
+//			Thread.sleep(3000);
+			System.out.println(driver.getTitle());
 
 			if (driver.getTitle().equalsIgnoreCase(windowtitle)) {
 
@@ -95,6 +102,7 @@ public class ReusableUtils {
 			}
 
 		}
+		System.out.println(count);
 
 		if (count >= driver.getWindowHandles().size()) {
 

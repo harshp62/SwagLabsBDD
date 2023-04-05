@@ -14,6 +14,8 @@ public class PageObjectManager {
 	public CheckoutTwo checkoutTwo;
 	public CheckoutOne checkoutOne;
 	public CheckoutComplete checkoutComplete;
+
+	public ExternalLinksPage externalLinksPage;
 	
 	public PageObjectManager (WebDriver driver) {
 		
@@ -57,5 +59,9 @@ public class PageObjectManager {
 
 	public CheckoutComplete getCheckoutComplete() {
 		return checkoutComplete = new CheckoutComplete(driver);
+	}
+
+	public ExternalLinksPage getExternalLinksPage() {
+		return externalLinksPage = new ExternalLinksPage(driver);
 	}
 }

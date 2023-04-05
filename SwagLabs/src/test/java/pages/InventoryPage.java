@@ -59,6 +59,17 @@ public class InventoryPage extends ReusableUtils {
     @FindBy(css = "button.btn")
     List<WebElement> removeFromCart;
 
+    @FindBy(linkText="Twitter")
+    WebElement twitterLinkBtn;
+
+    @FindBy(linkText="Facebook")
+    WebElement facebookLinkBtn;
+
+    @FindBy(linkText="LinkedIn")
+    WebElement linkedinLinkBtn;
+
+
+
 
     public boolean isInvMenuDisplayed() {
 
@@ -228,6 +239,37 @@ public class InventoryPage extends ReusableUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         boolean elementAbsent = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".shopping_cart_badge")));
         return elementAbsent;
+    }
+
+    public void goToLink(String linkname) throws Exception {
+
+        if (linkname.equalsIgnoreCase("facebook")) {
+
+            jsClick(facebookLinkBtn);
+
+            Thread.sleep(3000);
+            switchWindows("Sauce Labs | Facebook");
+
+//            String login = driver.findElement(By.xpath("(//span[text()='Log In'])[2]")).getText();
+//            System.out.println(login);
+//
+//            System.out.println(driver.getCurrentUrl());
+//            Thread.sleep(5000);
+
+        } else if (linkname.equalsIgnoreCase("linkedin")) {
+
+            jsClick(linkedinLinkBtn);
+            Thread.sleep(3000);
+            switchWindows("Sauce Labs | LinkedIn");
+
+        } else if (linkname.equalsIgnoreCase("twitter")) {
+
+            jsClick(twitterLinkBtn);
+            Thread.sleep(3000);
+            switchWindows("Sauce Labs (@saucelabs) / Twitter");
+
+        } else throw new Exception("No such link present");
+
     }
 
 }

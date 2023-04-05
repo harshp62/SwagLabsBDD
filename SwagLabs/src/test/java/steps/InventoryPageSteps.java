@@ -117,4 +117,11 @@ public class InventoryPageSteps {
 	}
 
 
+	@When("^the user clicks on the (.+) link$")
+	public void theUserClicksOnTheLinkLink(String linkname) throws Exception {
+
+		inventoryPage.goToLink(linkname);
+	}
+
+
 }
